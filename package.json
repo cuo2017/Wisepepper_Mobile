@@ -7,8 +7,14 @@
     "test": "jest"
   },
   "dependencies": {
-    "react": "16.6.3",
-    "react-native": "0.57.8"
+    "highcharts": "^7.0.1",
+    "moment": "^2.23.0",
+    "react": "^16.6.3",
+    "react-native": "0.57.8",
+    "react-native-chart-kit": "^1.2.1",
+    "react-native-highcharts": "^1.0.2",
+    "react-native-svg": "^8.0.10",
+    "teaset": "^0.5.10"
   },
   "devDependencies": {
     "babel-jest": "23.6.0",
@@ -20,3 +26,4 @@
     "preset": "react-native"
   }
 }
+

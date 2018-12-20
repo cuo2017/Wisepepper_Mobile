@@ -8,6 +8,7 @@
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
+import App from './src/index.js';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -17,7 +18,7 @@ const instructions = Platform.select({
 });
 
 type Props = {};
-export default class App extends Component<Props> {
+class AppExample extends Component<Props> {
   render() {
     return (
       <View style={styles.container}>
@@ -28,6 +29,7 @@ export default class App extends Component<Props> {
     );
   }
 }
+
 
 const styles = StyleSheet.create({
   container: {
@@ -47,3 +49,6 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
+
+
+export default App;
