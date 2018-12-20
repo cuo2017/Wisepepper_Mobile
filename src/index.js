@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
 import {TabView} from 'teaset';
 import PageA from './PageA';
+import { Icon } from 'react-native-elements';
+
 
 export default class App extends Component {
   render(){
@@ -17,23 +19,33 @@ export default class App extends Component {
         <TabView style={{flex: 1,width:'100%'}} type='projector'>
 		  <TabView.Sheet
 		    title='首页'
+		    icon={<Icon name='home' type='font-awesome' color='#ccc'/>}
+		    activeIcon={<Icon name='home' type='font-awesome' color='#337ab7' />}
 		  >
 		  	<PageA />
 		  </TabView.Sheet>
 		  <TabView.Sheet
 		    title='监测'
+		    icon={<Icon name='dashboard' type='font-awesome' color='#ccc' />}
+		    activeIcon={<Icon name='dashboard' type='font-awesome' color='#337ab7' />}
 		  >
 		  </TabView.Sheet>
 		  <TabView.Sheet
 		    title='咨询'
+		    icon={<Icon name='envelope' type='font-awesome' color='#ccc'/>}
+		    activeIcon={<Icon name='envelope' type='font-awesome' color='#337ab7' />}
 		  >
 		  </TabView.Sheet>
 		  <TabView.Sheet
 		    title='专家'
+		    icon={<Icon name='comments' type='font-awesome' color='#ccc'/>}
+		    activeIcon={<Icon name='comments' type='font-awesome' color='#337ab7' />}
 		  >
 		  </TabView.Sheet>
 		  <TabView.Sheet
 		    title='用户'
+		    icon={<Icon name='users' type='font-awesome' color='#ccc'/>}
+		    activeIcon={<Icon name='users' type='font-awesome' color='#337ab7' />}
 		  >
 		  </TabView.Sheet>
 		</TabView>

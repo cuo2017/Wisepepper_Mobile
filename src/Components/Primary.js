@@ -119,6 +119,20 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
   },
+  boardB: {
+  	width:'100%',
+  	height:200,
+  	flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+  },
+  boardBs: {
+  	width:'100%',
+  	height:100,
+  	flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+  },
 
 });
 
@@ -151,6 +165,46 @@ class BoardA extends Component {
 				</View>
 				<View style={styles.boardContent}>
 					<Text>{this.props.description}</Text>
+				</View>
+			</View>
+		);
+	}
+}
+
+class BoardB extends Component {
+	constructor(props){
+		super(props)
+	}
+	render(){
+		return(
+			<View style={styles.boardB}>
+				<View style={styles.boardBs}>
+					<View style={styles.boardContent}>
+						<Text>锈病爆发概率</Text>
+						<Text>{this.props.value}</Text>
+					</View>
+					<View style={styles.boardContent}>
+						<Text>锈病爆发概率</Text>
+						<Text>{this.props.value}</Text>
+					</View>
+					<View style={styles.boardContent}>
+						<Text>锈病爆发概率</Text>
+						<Text>{this.props.value}</Text>
+					</View>
+				</View>
+				<View style={styles.boardBs}>
+					<View style={styles.boardContent}>
+						<Text>锈病爆发概率</Text>
+						<Text>{this.props.value}</Text>
+					</View>
+					<View style={styles.boardContent}>
+						<Text>锈病爆发概率</Text>
+						<Text>{this.props.value}</Text>
+					</View>
+					<View style={styles.boardContent}>
+						<Text>锈病爆发概率</Text>
+						<Text>{this.props.value}</Text>
+					</View>
 				</View>
 			</View>
 		);
@@ -221,6 +275,7 @@ export class CardE extends Component {
 		return(
 			<View style={styles.card}>
 				<Title title={data.cardE.title} />
+				<BoardB value={data.cardA.value}/>
 			</View>
 		);
 	}

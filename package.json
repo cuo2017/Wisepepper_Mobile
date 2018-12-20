@@ -12,8 +12,10 @@
     "react": "^16.6.3",
     "react-native": "0.57.8",
     "react-native-chart-kit": "^1.2.1",
+    "react-native-elements": "^0.19.1",
     "react-native-highcharts": "^1.0.2",
     "react-native-svg": "^8.0.10",
+    "react-native-vector-icons": "^6.1.0",
     "teaset": "^0.5.10"
   },
   "devDependencies": {
@@ -26,4 +28,3 @@
     "preset": "react-native"
   }
 }
-
