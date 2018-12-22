@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
 import {TabView} from 'teaset';
 import PageA from './PageA';
+import PageB from './PageB';
+import PageC from './PageC';
+import PageE from './PageE';
 import { Icon } from 'react-native-elements';
 
 
@@ -29,12 +32,14 @@ export default class App extends Component {
 		    icon={<Icon name='dashboard' type='font-awesome' color='#ccc' />}
 		    activeIcon={<Icon name='dashboard' type='font-awesome' color='#337ab7' />}
 		  >
+		  	<PageB />
 		  </TabView.Sheet>
 		  <TabView.Sheet
-		    title='咨询'
+		    title='资讯'
 		    icon={<Icon name='envelope' type='font-awesome' color='#ccc'/>}
 		    activeIcon={<Icon name='envelope' type='font-awesome' color='#337ab7' />}
 		  >
+		  	<PageC />
 		  </TabView.Sheet>
 		  <TabView.Sheet
 		    title='专家'
@@ -47,6 +52,7 @@ export default class App extends Component {
 		    icon={<Icon name='users' type='font-awesome' color='#ccc'/>}
 		    activeIcon={<Icon name='users' type='font-awesome' color='#337ab7' />}
 		  >
+		  	<PageE />
 		  </TabView.Sheet>
 		</TabView>
       </View>

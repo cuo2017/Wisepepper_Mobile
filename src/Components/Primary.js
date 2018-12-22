@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, Dimensions} from 'react-native';
+import {Platform, StyleSheet, Text,View, Dimensions} from 'react-native';
 
 import {
   LineChart,
@@ -9,7 +9,7 @@ import {
   ContributionGraph
 } from 'react-native-chart-kit';
 
-
+import { Icon,Avatar,Button,Tooltip } from 'react-native-elements';
 
 
 
@@ -17,7 +17,12 @@ const data = {
 	cardA:{
 		title:'灾害预警',
 		value:'48%',
-		description:'低概率：0%~60%，中等概率：60%~80%，高概率：80%~100%',
+		description:{
+			a:'低概率：0%~60%',
+			b:'中等概率：60%~80%',
+			c:'高概率：80%~100%',
+		},
+		info:'通过神经网络得出的藤椒灾害预警',
 	},
 	cardB:{
 		title:'24小时天气预报',
@@ -70,6 +75,33 @@ const data = {
 	cardE:{
 		title:'其他天气情况',
 	},
+
+	barA:{
+		title:'过去一周空气温度走势',
+		label:['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+		data: [
+			          Math.random() * 10,
+			          Math.random() * 10,
+			          Math.random() * 10,
+			          Math.random() * 10,
+			          Math.random() * 10,
+			          Math.random() * 10,
+			          Math.random() * 10,
+			        ]
+	},
+	barB:{
+		title:'过去一周空气湿度走势',
+		label:['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+		data: [
+			          Math.random(),
+			          Math.random(),
+			          Math.random(),
+			          Math.random(),
+			          Math.random(),
+			          Math.random(),
+			          Math.random(),
+			        ]
+	}
 	
 }
 
@@ -78,16 +110,28 @@ const styles = StyleSheet.create({
     width:'100%',
     height:50,
     flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    borderTopLeftRadius:5,
+    borderTopRightRadius:5,
+  },
+  titlex: {
+    height:50,
+    flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
     backgroundColor: '#fff',
     borderTopLeftRadius:5,
     borderTopRightRadius:5,
     paddingLeft:20,
+    paddingRight:20,
   },
   title_text:{
     	color:'#000',
     	fontWeight:'bold',
+    	marginLeft:5,
+    	fontSize:14,
   },
 
   card: {
@@ -133,8 +177,36 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
   },
+  boardBsText:{
+  	color:'darkgreen',
+  	fontSize:18,
+  },
+
+  bar: {
+  	flex:1,
+  	height:250,
+  	flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
+    backgroundColor: 'rgb(250,250,250)',
+    marginTop:2.5,
+    marginBottom:2.5,
+  },
 
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 class Title extends Component {
@@ -144,11 +216,25 @@ class Title extends Component {
 	render(){
 		return(
 			<View style={styles.title}>
-				<Text style={styles.title_text}>{this.props.title}</Text>
+				<View style={styles.titlex}>
+					<Icon name={this.props.icon} type='feather' color='#337ab7'/>
+					<Text style={styles.title_text}>{this.props.title}</Text>
+				</View>
+				<View style={styles.titlex}>
+					<Tooltip popover={<Text>{data.cardA.info}</Text>}>
+						<Icon name='info' type='FontAwesome' color='#337ab7' />
+					</Tooltip>
+				</View>
 			</View>
 		);
 	}
 }
+
+
+
+
+
+
 class BoardA extends Component {
 	constructor(props){
 		super(props)
@@ -164,7 +250,9 @@ class BoardA extends Component {
 					}}>{this.props.value}</Text>
 				</View>
 				<View style={styles.boardContent}>
-					<Text>{this.props.description}</Text>
+					<Text>{this.props.description.a}</Text>
+					<Text>{this.props.description.b}</Text>
+					<Text>{this.props.description.c}</Text>
 				</View>
 			</View>
 		);
@@ -180,30 +268,30 @@ class BoardB extends Component {
 			<View style={styles.boardB}>
 				<View style={styles.boardBs}>
 					<View style={styles.boardContent}>
-						<Text>锈病爆发概率</Text>
-						<Text>{this.props.value}</Text>
+						<Text>实时天气</Text>
+						<Text style={styles.boardBsText}>{this.props.value}</Text>
 					</View>
 					<View style={styles.boardContent}>
-						<Text>锈病爆发概率</Text>
-						<Text>{this.props.value}</Text>
+						<Text>气压</Text>
+						<Text style={styles.boardBsText}>{this.props.value}</Text>
 					</View>
 					<View style={styles.boardContent}>
-						<Text>锈病爆发概率</Text>
-						<Text>{this.props.value}</Text>
+						<Text>紫外线强度</Text>
+						<Text style={styles.boardBsText}>{this.props.value}</Text>
 					</View>
 				</View>
 				<View style={styles.boardBs}>
 					<View style={styles.boardContent}>
-						<Text>锈病爆发概率</Text>
-						<Text>{this.props.value}</Text>
+						<Text>风向</Text>
+						<Text style={styles.boardBsText}>{this.props.value}</Text>
 					</View>
 					<View style={styles.boardContent}>
-						<Text>锈病爆发概率</Text>
-						<Text>{this.props.value}</Text>
+						<Text>风级</Text>
+						<Text style={styles.boardBsText}>{this.props.value}</Text>
 					</View>
 					<View style={styles.boardContent}>
-						<Text>锈病爆发概率</Text>
-						<Text>{this.props.value}</Text>
+						<Text>风速</Text>
+						<Text style={styles.boardBsText}>{this.props.value}</Text>
 					</View>
 				</View>
 			</View>
@@ -218,7 +306,7 @@ export class CardA extends Component {
 	render(){
 		return(
 			<View style={styles.card}>
-				<Title title={data.cardA.title} />
+				<Title title={data.cardA.title} icon="compass"/>
 				<BoardA value={data.cardA.value} description={data.cardA.description}/>
 			</View>
 		);
@@ -232,7 +320,7 @@ export class CardB extends Component {
 	render(){
 		return(
 			<View style={styles.card}>
-				<Title title={data.cardB.title} />
+				<Title title={data.cardB.title} icon="cloud"/>
 				<LiChart label={data.cardB.label} data={data.cardB.data}/>
 			</View>
 		);
@@ -246,7 +334,7 @@ export class CardC extends Component {
 	render(){
 		return(
 			<View style={styles.card}>
-				<Title title={data.cardC.title} />
+				<Title title={data.cardC.title} icon="cloud-rain"/>
 				<LiChart label={data.cardC.label} data={data.cardC.data}/>
 			</View>
 		);
@@ -260,7 +348,7 @@ export class CardD extends Component {
 	render(){
 		return(
 			<View style={styles.card}>
-				<Title title={data.cardD.title} />
+				<Title title={data.cardD.title} icon="cloud-drizzle"/>
 				<PrChart label={data.cardD.label}  data={data.cardD.data} />
 			</View>
 		);
@@ -274,7 +362,7 @@ export class CardE extends Component {
 	render(){
 		return(
 			<View style={styles.card}>
-				<Title title={data.cardE.title} />
+				<Title title={data.cardE.title} icon="moon"/>
 				<BoardB value={data.cardA.value}/>
 			</View>
 		);
@@ -357,5 +445,38 @@ export class PrChart extends Component {
 			  />
 			</View>
 	    );
+	}
+}
+
+
+
+
+//  ======= Page B ====== //
+
+export class BarA extends Component {
+	constructor(props){
+		super(props)
+	}
+	render(){
+		return(
+			<View style={styles.bar}>
+				<Title title={data.barA.title} icon="monitor"/>
+				<LiChart label={data.barA.label} data={data.barA.data}/>
+			</View>
+		);
+	}
+}
+
+export class BarB extends Component {
+	constructor(props){
+		super(props)
+	}
+	render(){
+		return(
+			<View style={styles.bar}>
+				<Title title={data.barB.title} icon="thermometer"/>
+				<LiChart label={data.barB.label} data={data.barB.data}/>
+			</View>
+		);
 	}
 }
