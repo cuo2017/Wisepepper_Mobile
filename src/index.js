@@ -4,6 +4,7 @@ import {TabView} from 'teaset';
 import PageA from './PageA';
 import PageB from './PageB';
 import PageC from './PageC';
+import PageD from './PageD';
 import PageE from './PageE';
 import { Icon } from 'react-native-elements';
 
@@ -25,7 +26,7 @@ export default class App extends Component {
 		    icon={<Icon name='home' type='font-awesome' color='#ccc'/>}
 		    activeIcon={<Icon name='home' type='font-awesome' color='#337ab7' />}
 		  >
-		  	<PageA />
+		  	<PageA/>
 		  </TabView.Sheet>
 		  <TabView.Sheet
 		    title='监测'
@@ -46,6 +47,7 @@ export default class App extends Component {
 		    icon={<Icon name='comments' type='font-awesome' color='#ccc'/>}
 		    activeIcon={<Icon name='comments' type='font-awesome' color='#337ab7' />}
 		  >
+		  	<PageD />
 		  </TabView.Sheet>
 		  <TabView.Sheet
 		    title='用户'

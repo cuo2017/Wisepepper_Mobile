@@ -6,6 +6,16 @@
  * @flow
  */
 
+
+ // Primary_Color:'#337ab7'
+ // Red:'#FF6666'
+ // Orange:'#FF9966'
+ // Green:#66CC99
+ // Blue:#6699FF
+ // Purple:#9966FF
+ // LightBlue:#66CCFF
+
+
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
 import App from './src/index.js';

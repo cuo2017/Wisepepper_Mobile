@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, ImageBackground, ScrollView} from 'react-native';
 import {CardA, CardB, CardC, CardD, CardE} from './Components/Primary';
-import moment from 'moment';
+import {NavigationBar,Overlay,Label} from 'teaset';
 const styles = StyleSheet.create({
   page: {
     flex: 1,
@@ -17,7 +17,7 @@ export default class PageA extends Component{
 	constructor(props){
 		super(props)
 		this.state = {
-			abc:'efg',
+			isVisible:false,
 		}
 	}
 	render(){
@@ -27,6 +27,7 @@ export default class PageA extends Component{
 		          width:'100%',
 		          height:'100%',
 		        }}>
+		        
 				<ScrollView 
 			        showsVerticalScrollIndicator={false}
 			        horizontal={false} 
@@ -34,36 +35,9 @@ export default class PageA extends Component{
 			        	width:'100%',
 			        }}>
 			        <View style={{
-			        	width:'100%',
-			        	height:100,
-			        	flexDirection: 'row',
-					    justifyContent: 'space-between',
-					    alignItems: 'flex-end',
-					    padding:10,
+			        	height:0,
+					    marginTop:72.5,
 			        }}>
-			        	<View style={{
-
-			        		flex:1,
-			        		flexDirection: 'row',
-						    justifyContent: 'flex-start',
-						    alignItems: 'center',
-			        	}}>
-							<Text style={{
-								color:'#fff',
-								fontSize:17
-							}}>{'四川省绵阳市'}</Text>
-						</View>
-						<View style={{
-			        		flex:1,
-			        		flexDirection: 'row',
-						    justifyContent: 'flex-end',
-						    alignItems: 'center',
-			        	}}>
-							<Text style={{
-								color:'#fff',
-								fontSize:17
-							}}>{moment(Date()).format('ll')}</Text>
-						</View>
 			        </View>
 			        <CardA />
 			        <CardB />
@@ -71,6 +45,7 @@ export default class PageA extends Component{
 			        <CardD />
 			        <CardE />
 		        </ScrollView>
+		        <NavigationBar title='智慧藤椒' />
 				</ImageBackground>
 			</View>
 		);

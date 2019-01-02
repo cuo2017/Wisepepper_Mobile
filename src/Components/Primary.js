@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text,View, Dimensions} from 'react-native';
+import {Platform, StyleSheet, Text,View, Dimensions,ScrollView} from 'react-native';
 
 import {
   LineChart,
@@ -9,9 +9,9 @@ import {
   ContributionGraph
 } from 'react-native-chart-kit';
 
-import { Icon,Avatar,Button,Tooltip } from 'react-native-elements';
-
-
+import { Icon,Avatar } from 'react-native-elements';
+import moment from 'moment';
+import {Button,Overlay,Label} from 'teaset';
 
 const data = {
 	cardA:{
@@ -74,6 +74,12 @@ const data = {
 	},
 	cardE:{
 		title:'其他天气情况',
+		valueA:'晴',
+		valueB:'3000',
+		valueC:'27610',
+		valueD:'东南',
+		valueE:'4',
+		valueF:'300',
 	},
 
 	barA:{
@@ -125,11 +131,16 @@ const styles = StyleSheet.create({
     borderTopLeftRadius:5,
     borderTopRightRadius:5,
     paddingLeft:20,
-    paddingRight:20,
+    paddingRight:10,
   },
   title_text:{
-    	color:'#000',
+    	color:'#333',
     	fontWeight:'bold',
+    	marginLeft:5,
+    	fontSize:16,
+  },
+  subtitle_text:{
+    	color:'#666',
     	marginLeft:5,
     	fontSize:14,
   },
@@ -182,6 +193,7 @@ const styles = StyleSheet.create({
   	fontSize:18,
   },
 
+
   bar: {
   	flex:1,
   	height:250,
@@ -213,17 +225,29 @@ class Title extends Component {
 	constructor(props){
 		super(props)
 	}
+	modal(e){
+		let overlayView = (
+		    <Overlay.PopView
+			    style={{alignItems: 'center', justifyContent: 'center'}}
+			    >
+			    <View style={{backgroundColor: '#fff', minWidth: 300, minHeight: 500, borderRadius: 5, justifyContent: 'center', alignItems: 'center'}}>
+			      <Label type='title' size='xl' text={this.props.title} />
+			    </View>
+			</Overlay.PopView>
+		);
+		Overlay.show(overlayView);
+	}
 	render(){
 		return(
 			<View style={styles.title}>
 				<View style={styles.titlex}>
-					<Icon name={this.props.icon} type='feather' color='#337ab7'/>
+					<Icon name={this.props.icon} size={20} type='feather' color='#337ab7'/>
 					<Text style={styles.title_text}>{this.props.title}</Text>
 				</View>
 				<View style={styles.titlex}>
-					<Tooltip popover={<Text>{data.cardA.info}</Text>}>
-						<Icon name='info' type='FontAwesome' color='#337ab7' />
-					</Tooltip>
+					<Button onPress={this.modal.bind(this)} style={{padding:0,width:47,backgroundColor: '#fff', borderColor: '#fff'}}>
+					  <Icon name='info' size={20} type='feather' color='#337ab7'/>
+					</Button>
 				</View>
 			</View>
 		);
@@ -243,16 +267,28 @@ class BoardA extends Component {
 		return(
 			<View style={styles.boardA}>
 				<View style={styles.boardContent}>
-					<Text>锈病爆发概率</Text>
 					<Text style={{
 						fontSize:50,
-						color:'green',
+						color:'#66CC99',
 					}}>{this.props.value}</Text>
+					<Text style={{
+						fontSize:14,
+						color:'#666',
+					}}>锈病爆发概率</Text>
 				</View>
 				<View style={styles.boardContent}>
-					<Text>{this.props.description.a}</Text>
-					<Text>{this.props.description.b}</Text>
-					<Text>{this.props.description.c}</Text>
+					<Text style={{
+						fontSize:14,
+						color:'#66CC99',
+					}}>{this.props.description.a}</Text>
+					<Text style={{
+						fontSize:14,
+						color:'#FF9966',
+					}}>{this.props.description.b}</Text>
+					<Text style={{
+						fontSize:14,
+						color:'#FF6666',
+					}}>{this.props.description.c}</Text>
 				</View>
 			</View>
 		);
@@ -268,30 +304,48 @@ class BoardB extends Component {
 			<View style={styles.boardB}>
 				<View style={styles.boardBs}>
 					<View style={styles.boardContent}>
+						<Text style={{
+							color:'#FF9966',
+  							fontSize:20}}>{this.props.valueA}</Text>
 						<Text>实时天气</Text>
-						<Text style={styles.boardBsText}>{this.props.value}</Text>
+
 					</View>
 					<View style={styles.boardContent}>
+						<Text style={{
+							color:'#6699FF',
+  							fontSize:20}}>{this.props.valueB}</Text>
 						<Text>气压</Text>
-						<Text style={styles.boardBsText}>{this.props.value}</Text>
+
 					</View>
 					<View style={styles.boardContent}>
+						<Text style={{
+							color:'#9966FF',
+  							fontSize:20}}>{this.props.valueC}</Text>
 						<Text>紫外线强度</Text>
-						<Text style={styles.boardBsText}>{this.props.value}</Text>
+
 					</View>
 				</View>
 				<View style={styles.boardBs}>
 					<View style={styles.boardContent}>
+						<Text style={{
+							color:'#66CCFF',
+  							fontSize:20}}>{this.props.valueD}</Text>
 						<Text>风向</Text>
-						<Text style={styles.boardBsText}>{this.props.value}</Text>
+
 					</View>
 					<View style={styles.boardContent}>
+						<Text style={{
+							color:'#66CCFF',
+  							fontSize:20}}>{this.props.valueE}</Text>
 						<Text>风级</Text>
-						<Text style={styles.boardBsText}>{this.props.value}</Text>
+
 					</View>
 					<View style={styles.boardContent}>
+						<Text style={{
+							color:'#66CCFF',
+  							fontSize:20}}>{this.props.valueF}</Text>
 						<Text>风速</Text>
-						<Text style={styles.boardBsText}>{this.props.value}</Text>
+
 					</View>
 				</View>
 			</View>
@@ -301,12 +355,17 @@ class BoardB extends Component {
 
 export class CardA extends Component {
 	constructor(props){
-		super(props)
+		super(props);
+		this.state={
+			isVisible:false,
+		}
+
 	}
+	
 	render(){
 		return(
 			<View style={styles.card}>
-				<Title title={data.cardA.title} icon="compass"/>
+				<Title  title={data.cardA.title} icon="compass" subtitle={'四川省绵阳市，' + moment(Date()).format('ll')}/>
 				<BoardA value={data.cardA.value} description={data.cardA.description}/>
 			</View>
 		);
@@ -320,8 +379,15 @@ export class CardB extends Component {
 	render(){
 		return(
 			<View style={styles.card}>
-				<Title title={data.cardB.title} icon="cloud"/>
-				<LiChart label={data.cardB.label} data={data.cardB.data}/>
+				<Title title={data.cardB.title} icon="cloud" subtitle={moment(Date()).format('ll')}/>
+				<ScrollView 
+			        showsHorizontalScrollIndicator={false}
+			        horizontal={true} 
+					style={{
+			        	width:'100%',
+			        }}>
+					<LiChart width={2*Dimensions.get('window').width - 20} label={data.cardB.label} data={data.cardB.data} color="#337ab7"/>
+				</ScrollView>
 			</View>
 		);
 	}
@@ -334,8 +400,8 @@ export class CardC extends Component {
 	render(){
 		return(
 			<View style={styles.card}>
-				<Title title={data.cardC.title} icon="cloud-rain"/>
-				<LiChart label={data.cardC.label} data={data.cardC.data}/>
+				<Title title={data.cardC.title} icon="cloud-rain" subtitle={moment(Date()).format('ll')}/>
+				<LiChart width={Dimensions.get('window').width - 20} label={data.cardC.label} data={data.cardC.data} color="#66CC99"/>
 			</View>
 		);
 	}
@@ -348,8 +414,8 @@ export class CardD extends Component {
 	render(){
 		return(
 			<View style={styles.card}>
-				<Title title={data.cardD.title} icon="cloud-drizzle"/>
-				<PrChart label={data.cardD.label}  data={data.cardD.data} />
+				<Title title={data.cardD.title} icon="cloud-drizzle" subtitle={moment(Date()).format('ll')}/>
+				<PrChart label={data.cardD.label}  data={data.cardD.data} color="#337ab7"/>
 			</View>
 		);
 	}
@@ -362,8 +428,13 @@ export class CardE extends Component {
 	render(){
 		return(
 			<View style={styles.card}>
-				<Title title={data.cardE.title} icon="moon"/>
-				<BoardB value={data.cardA.value}/>
+				<Title title={data.cardE.title} icon="moon" subtitle={moment(Date()).format('ll')}/>
+				<BoardB valueA={data.cardE.valueA} 
+						valueB={data.cardE.valueB} 
+						valueC={data.cardE.valueC} 
+						valueD={data.cardE.valueD} 
+						valueE={data.cardE.valueE} 
+						valueF={data.cardE.valueF}/>
 			</View>
 		);
 	}
@@ -387,14 +458,14 @@ export class LiChart extends Component {
 			        data: this.props.data,
 			      }]
 			    }}
-			    width={Dimensions.get('window').width - 20} // from react-native
+			    width={this.props.width} // from react-native
 			    height={200}
 			    chartConfig={{
 			      backgroundColor: 'rgb(250,250,250)',
 			      backgroundGradientFrom: 'rgb(250,250,250)',
 			      backgroundGradientTo: 'rgb(250,250,250)',
 			      decimalPlaces: 1, // optional, defaults to 2dp 小数点两位
-			      color: () => `#666`,
+			      color: () => this.props.color,
 			      style: {
 			        borderRadius: 0,
 			      }
@@ -421,19 +492,17 @@ export class PrChart extends Component {
 		    justifyContent: 'center',
 		    alignItems: 'center',
 	      }}>
-	      	<Text>
-	      		外圈为空气湿度，内圈为土壤湿度
-	      	</Text>
+	      	
 			  <ProgressChart
 			    data={this.props.data}
 			    width={Dimensions.get('window').width - 20} // from react-native
-			    height={180}
+			    height={170}
 			    chartConfig={{
 			      backgroundColor: 'rgb(250,250,250)',
 			      backgroundGradientFrom: 'rgb(250,250,250)',
 			      backgroundGradientTo: 'rgb(250,250,250)',
 			      decimalPlaces: 1, // optional, defaults to 2dp 小数点两位
-			      color:  (opacity = 1) => `rgba(95, 95, 95, ${opacity})`,
+			      color:  (opacity = 1) => `rgba(102, 153, 255, ${opacity})`,
 			      style: {
 			        borderRadius: 0,
 			      }
@@ -443,6 +512,9 @@ export class PrChart extends Component {
 			      borderRadius: 0,
 			    }}
 			  />
+			  <Text>
+	      		外圈为空气湿度，内圈为土壤湿度
+	      	  </Text>
 			</View>
 	    );
 	}
@@ -459,9 +531,9 @@ export class BarA extends Component {
 	}
 	render(){
 		return(
-			<View style={styles.bar}>
+			<View style={styles.card}>
 				<Title title={data.barA.title} icon="monitor"/>
-				<LiChart label={data.barA.label} data={data.barA.data}/>
+				<LiChart width={Dimensions.get('window').width - 20} label={data.barA.label} data={data.barA.data} color="#337ab7"/>
 			</View>
 		);
 	}
@@ -473,9 +545,9 @@ export class BarB extends Component {
 	}
 	render(){
 		return(
-			<View style={styles.bar}>
+			<View style={styles.card}>
 				<Title title={data.barB.title} icon="thermometer"/>
-				<LiChart label={data.barB.label} data={data.barB.data}/>
+				<LiChart width={Dimensions.get('window').width - 20} label={data.barB.label} data={data.barB.data} color="#337ab7"/>
 			</View>
 		);
 	}
