@@ -152,8 +152,6 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
     backgroundColor: 'rgb(250,250,250)',
-    marginLeft:5,
-    marginRight:5,
     marginTop:2.5,
     marginBottom:2.5,
     borderBottomLeftRadius:5,

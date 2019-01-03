@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, Dimensions,ImageBackground, ScrollView, Image} from 'react-native';
 import {BarA, BarB} from './Components/Primary';
 import {NavigationBar,SegmentedView, Label, ListRow} from 'teaset';
+import ParallaxScrollView from 'react-native-parallax-scroll-view';
 const styles = StyleSheet.create({
   page: {
     flex: 1,
@@ -31,23 +32,7 @@ export default class PageC extends Component{
 		        <SegmentedView style={{flex: 1,marginTop:68}} type='projector'>
 				  	<SegmentedView.Sheet title='藤椒资讯' style={{paddingTop:0}}>
 					    <View style={{flex: 1, alignItems: 'center'}}>
-					        <ScrollView 
-						        showsVerticalScrollIndicator={false}
-						        horizontal={false} 
-								style={{
-						        	width:'100%',
-						        }}>
-						       	<ListItem />
-						       	<ListItem />
-						       	<ListItem />
-						       	<ListItem />
-						       	<ListItem />
-						       	<ListItem />
-						       	<ListItem />
-						       	<ListItem />
-						       	<ListItem />
-						       	<ListItem />
-					        </ScrollView>
+					         
 					    </View>
 					</SegmentedView.Sheet>
 					<SegmentedView.Sheet title='锈病'>

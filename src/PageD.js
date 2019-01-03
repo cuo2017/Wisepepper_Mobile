@@ -30,9 +30,8 @@ export default class PageD extends Component{
 		          width:'100%',
 		          height:'100%',
 		        }}>
-		        <SegmentedView style={{flex: 1,marginTop:68}} type='projector'>
-				  	<SegmentedView.Sheet title='藤椒资讯' style={{paddingTop:0}}>
-					    <View style={{flex: 1, alignItems: 'center'}}>
+		        <View style={{flex: 1,marginTop:68}}>
+				  	
 					        <ScrollView 
 						        showsVerticalScrollIndicator={false}
 						        horizontal={false} 
@@ -50,93 +49,8 @@ export default class PageD extends Component{
 						       	<ListItem />
 						       	<ListItem />
 					        </ScrollView>
-					    </View>
-					</SegmentedView.Sheet>
-					<SegmentedView.Sheet title='锈病'>
-					    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-					    	<ScrollView 
-						        showsVerticalScrollIndicator={false}
-						        horizontal={false} 
-								style={{
-						        	width:'100%',
-						        }}>
-						        <ListItem />
-						       	<ListItem />
-						       	<ListItem />
-						       	<ListItem />
-						       	<ListItem />
-						       	<ListItem />
-						       	<ListItem />
-						       	<ListItem />
-						       	<ListItem />
-					        </ScrollView>
-					    </View>
-				  	</SegmentedView.Sheet>
-				  	<SegmentedView.Sheet title='虫害'>
-					    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-					    	<ScrollView 
-						        showsVerticalScrollIndicator={false}
-						        horizontal={false} 
-								style={{
-						        	width:'100%',
-						        }}>
-						       	<ListItem />
-						       	<ListItem />
-						       	<ListItem />
-						       	<ListItem />
-						       	<ListItem />
-						       	<ListItem />
-						       	<ListItem />
-						        
-					        </ScrollView>
-					    </View>
-				  	</SegmentedView.Sheet>
-				  	<SegmentedView.Sheet title='干旱'>
-					    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-					    	<ScrollView 
-						        showsVerticalScrollIndicator={false}
-						        horizontal={false} 
-								style={{
-						        	width:'100%',
-						        }}>
-						       	<ListItem />
-						       	<ListItem />
-						       	<ListItem />
-						       	<ListItem />
-						       	<ListItem />
-						        
-					        </ScrollView>
-					    </View>
-				  	</SegmentedView.Sheet>
-				  	<SegmentedView.Sheet title='冻害'>
-					    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-					    	<ScrollView 
-						        showsVerticalScrollIndicator={false}
-						        horizontal={false} 
-								style={{
-						        	width:'100%',
-						        }}>
-						       	<ListItem />
-						       	<ListItem />
-						       	<ListItem />
-						       	<ListItem />
-						       	<ListItem />
-						       	<ListItem />
-						       	<ListItem />
-						       	<ListItem />
-						       	<ListItem />
-						       	<ListItem />
-						       	<ListItem />
-						       	<ListItem />
-						       	<ListItem />
-						       	<ListItem />
-						       	<ListItem />
-						        
-					        </ScrollView>
-					    </View>
-				  	</SegmentedView.Sheet>
-				</SegmentedView>
-			    <NavigationBar title='藤椒资讯' />
+				    </View>
+			    <NavigationBar title='专家解答' />
 				</ImageBackground>
 			</View>
 		);

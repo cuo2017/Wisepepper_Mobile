@@ -5302,6 +5302,18 @@ react-native-gesture-handler@1.0.4:
     invariant "^2.2.2"
     prop-types "^15.5.10"
 
+react-native-gifted-listview@^0.0.15:
+  version "0.0.15"
+  resolved "https://registry.yarnpkg.com/react-native-gifted-listview/-/react-native-gifted-listview-0.0.15.tgz#c92b5b7b32cea7705b727ab4bc199751379dce07"
+  integrity sha1-yStbezLOp3Bbcnq0vBmXUTedzgc=
+  dependencies:
+    react-native-gifted-spinner "^0.0.4"
+
+react-native-gifted-spinner@^0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/react-native-gifted-spinner/-/react-native-gifted-spinner-0.0.4.tgz#32652b5a60423f14719a1c3125613299af0995f2"
+  integrity sha1-MmUrWmBCPxRxmhwxJWEyma8JlfI=
+
 react-native-highcharts@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/react-native-highcharts/-/react-native-highcharts-1.0.2.tgz#cb8269efc5dbd7d550d2d68b3ac008b24bfba6bb"
@@ -5314,6 +5326,13 @@ react-native-maps@0.21.0:
   dependencies:
     babel-plugin-module-resolver "^2.3.0"
     babel-preset-react-native "1.9.0"
+
+react-native-parallax-scroll-view@^0.21.3:
+  version "0.21.3"
+  resolved "https://registry.yarnpkg.com/react-native-parallax-scroll-view/-/react-native-parallax-scroll-view-0.21.3.tgz#d956ad224ce3b0a2725b80574bcbf688bbeda14e"
+  integrity sha512-oVbZPijNGYGcpU2z7k/ZOOnl0vYxch7qtVvaJpH4+wLVnEP49NC2diCzjFGz8PE0yEcgyeTdkpdUK8RTD3QEew==
+  dependencies:
+    prop-types "^15.6.0"
 
 react-native-reanimated@1.0.0-alpha.3:
   version "1.0.0-alpha.3"
