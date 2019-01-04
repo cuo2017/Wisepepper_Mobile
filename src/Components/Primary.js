@@ -11,7 +11,7 @@ import {
 
 import { Icon,Avatar } from 'react-native-elements';
 import moment from 'moment';
-import {Button,Overlay,Label} from 'teaset';
+import {Button,Overlay,Label,Carousel} from 'teaset';
 
 const data = {
 	cardA:{
@@ -23,6 +23,22 @@ const data = {
 			c:'高概率：80%~100%',
 		},
 		info:'通过神经网络得出的藤椒灾害预警',
+		label:['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月',],
+		data: [
+			          Math.floor(Math.random() * 10),
+			          Math.floor(Math.random() * 10),
+			          Math.floor(Math.random() * 10),
+			          Math.floor(Math.random() * 10),
+			          Math.floor(Math.random() * 10),
+			          Math.floor(Math.random() * 10),
+			          Math.floor(Math.random() * 10),
+			          Math.floor(Math.random() * 10),
+			          Math.floor(Math.random() * 10),
+			          Math.floor(Math.random() * 10),
+			          Math.floor(Math.random() * 10),
+			          Math.floor(Math.random() * 10),
+			        ],
+	    titlex:'近一年锈病爆发次数'
 	},
 	cardB:{
 		title:'24小时天气预报',
@@ -364,7 +380,19 @@ export class CardA extends Component {
 		return(
 			<View style={styles.card}>
 				<Title  title={data.cardA.title} icon="compass" subtitle={'四川省绵阳市，' + moment(Date()).format('ll')}/>
-				<BoardA value={data.cardA.value} description={data.cardA.description}/>
+				<Carousel
+				  style={{height: 200, width:'100%'}}
+				  control={
+				    <Carousel.Control
+				      style={{alignItems: 'flex-end'}}
+				      dot={<Text style={{backgroundColor: 'rgba(0, 0, 0, 0)', color: '#337ab7', padding: 4}}>□</Text>}
+				      activeDot={<Text style={{backgroundColor: 'rgba(0, 0, 0, 0)', color: '#337ab7', padding: 4}}>■</Text>}
+				      />
+				  }
+				>
+					<BoardA value={data.cardA.value} description={data.cardA.description}/>
+					<LiChart title={data.cardA.titlex} width={Dimensions.get('window').width - 20} label={data.cardA.label} data={data.cardA.data} color="#9966FF"/>
+				</Carousel>
 			</View>
 		);
 	}
@@ -457,7 +485,7 @@ export class LiChart extends Component {
 			      }]
 			    }}
 			    width={this.props.width} // from react-native
-			    height={200}
+			    height={170}
 			    chartConfig={{
 			      backgroundColor: 'rgb(250,250,250)',
 			      backgroundGradientFrom: 'rgb(250,250,250)',
@@ -474,6 +502,7 @@ export class LiChart extends Component {
 			      borderRadius: 0,
 			    }}
 			  />
+			  <Text style={{width:'100%',textAlign:'center'}}>{this.props.title}</Text>
 			</View>
 	    );
 	}

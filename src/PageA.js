@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, ImageBackground, ScrollView,Dimensions,TouchableHighlight} from 'react-native';
 import {CardA, CardB, CardC, CardD, CardE} from './Components/Primary';
-import {NavigationBar,Overlay,Label} from 'teaset';
+import {NavigationBar,Overlay,Label,Carousel} from 'teaset';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
 import moment from 'moment';
 const styles = StyleSheet.create({
@@ -45,16 +45,28 @@ export default class PageA extends Component{
 			      	}}
 			      	fadeOutForeground
 			      	renderForeground={() => (
+			      	<Carousel
+					  style={{alignItems: 'flex-end',borderTopLeftRadius:5,
+		        			borderTopRightRadius:5,
+		        			borderBottomLeftRadius:5,
+		        			borderBottomRightRadius:5,
+		        			backgroundColor:'#fff',
+		        			height: 100,
+		        			width:Dimensions.get('window').width-10,}}
+					  control={false}
+					>
 			       <View style={{ 
-			       	borderTopLeftRadius:5,
-		        	borderTopRightRadius:5,
-		        	borderBottomLeftRadius:5,
-		        	borderBottomRightRadius:5,
-		        	backgroundColor:'#fff',
-			       	height: 100, width:Dimensions.get('window').width-10, alignItems: 'center', justifyContent: 'center' }}>
+			       		height: 100,
+			       	 	width:Dimensions.get('window').width-10, alignItems: 'center', justifyContent: 'center' }}>
 			        	<Text>四川省绵阳市</Text>
-			        	<Text>{moment(Date()).format('ll')}</Text>
 			        </View>
+			        <View style={{ 
+			       		height: 100,
+			       	 	width:Dimensions.get('window').width-10, alignItems: 'center', justifyContent: 'center' }}>
+			        	<Text>{moment(Date()).format('ll')}</Text>
+		        	</View>
+
+			        </Carousel>
 			      )}>
 			      	<View style={{paddingTop:2.5,width:'100%',backgroundColor:'rgb(255,255,255,0)'}}>
 			      	<CardA />
