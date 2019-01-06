@@ -16,11 +16,11 @@ import {Button,Overlay,Label,Carousel} from 'teaset';
 const data = {
 	cardA:{
 		title:'灾害预警',
-		value:'48%',
+		value:'较低',
 		description:{
-			a:'低概率：0%~60%',
-			b:'中等概率：60%~80%',
-			c:'高概率：80%~100%',
+			a:'较低概率：爆发概率较小，基本不会爆发',
+			b:'中等概率：有一定爆发概率，程度不会太严重',
+			c:'较高概率：爆发概率较大，请做好准备措施',
 		},
 		info:'通过神经网络得出的藤椒灾害预警',
 		label:['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月',],
@@ -71,25 +71,31 @@ const data = {
 			        ]
 	},
 	cardC:{
-		title:'未来一周天气预报',
+		title:'未来一周气温（°C）',
 		label:['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
 		data: [
-			          Math.random() * 10,
-			          Math.random() * 10,
-			          Math.random() * 10,
-			          Math.random() * 10,
-			          Math.random() * 10,
-			          Math.random() * 10,
-			          Math.random() * 10,
+			          Math.random() * 10 - 5,
+			          Math.random() * 10 - 5,
+			          Math.random() * 10 - 5,
+			          Math.random() * 10 - 5,
+			          Math.random() * 10 - 5,
+			          Math.random() * 10 - 5,
+			          Math.random() * 10 - 5,
 			        ]
 	},
 	cardD:{
 		title:'湿度情况',
-		label:['空气湿度', '土壤'],
-		data:[0.64,0.72],
+		label:['空气湿度'],
+		data:[0.64],
 	},
 	cardE:{
 		title:'其他天气情况',
+		titleA:'实时天气',
+		titleB:'气压',
+		titleC:'紫外线强度',
+		titleD:'风向',
+		titleE:'风级',
+		titleF:'风速',
 		valueA:'晴',
 		valueB:'3000',
 		valueC:'27610',
@@ -99,7 +105,7 @@ const data = {
 	},
 
 	barA:{
-		title:'过去一周空气温度走势',
+		title:'历史锈病爆发情况',
 		label:['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
 		data: [
 			          Math.random() * 10,
@@ -112,8 +118,8 @@ const data = {
 			        ]
 	},
 	barB:{
-		title:'过去一周空气湿度走势',
-		label:['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+		title:'过去一年月均温走势',
+		label:['一月', '二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月',],
 		data: [
 			          Math.random(),
 			          Math.random(),
@@ -122,8 +128,64 @@ const data = {
 			          Math.random(),
 			          Math.random(),
 			          Math.random(),
+			          Math.random(),
+			          Math.random(),
+			          Math.random(),
+			          Math.random(),
+			          Math.random(),
 			        ]
-	}
+	},
+	barC:{
+		title:'过去一年月均湿度走势',
+		label:['一月', '二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月',],
+		data: [
+			          Math.random(),
+			          Math.random(),
+			          Math.random(),
+			          Math.random(),
+			          Math.random(),
+			          Math.random(),
+			          Math.random(),
+			          Math.random(),
+			          Math.random(),
+			          Math.random(),
+			          Math.random(),
+			          Math.random(),
+			        ]
+	},
+	barD:{
+		title:'过去一年月均降水量走势',
+		label:['一月', '二月','三月','四月','五月','六月','七月','八月','九月','十月','十一月','十二月',],
+		data: [
+			          Math.random(),
+			          Math.random(),
+			          Math.random(),
+			          Math.random(),
+			          Math.random(),
+			          Math.random(),
+			          Math.random(),
+			          Math.random(),
+			          Math.random(),
+			          Math.random(),
+			          Math.random(),
+			          Math.random(),
+			        ]
+	},
+	barE:{
+		title:'实时监控',
+		titleA:'空气温度',
+		titleB:'湿度',
+		titleC:'土壤水分',
+		titleD:'气压',
+		titleE:'光照',
+		titleF:'土壤EC值',
+		valueA:'4°C',
+		valueB:'64%',
+		valueC:'400',
+		valueD:'10000',
+		valueE:'27610',
+		valueF:'0',
+	},
 	
 }
 
@@ -187,6 +249,20 @@ const styles = StyleSheet.create({
   	flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
+    paddingRight:20,
+  },
+  boardD: {
+  	width:80,
+  	height:140,
+  	marginLeft:5,
+  	marginRight:5,
+  	marginTop:30,
+  	marginBottom:30,
+  	backgroundColor:'#fff',
+  	borderRadius:5,
+  	flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
   },
   boardB: {
   	width:'100%',
@@ -244,8 +320,9 @@ class Title extends Component {
 		    <Overlay.PopView
 			    style={{alignItems: 'center', justifyContent: 'center'}}
 			    >
-			    <View style={{backgroundColor: '#fff', minWidth: 300, minHeight: 500, borderRadius: 5, justifyContent: 'center', alignItems: 'center'}}>
-			      <Label type='title' size='xl' text={this.props.title} />
+			    <View style={{backgroundColor: '#fff', minWidth: 300, minHeight: 100, borderRadius: 5, justifyContent: 'center', alignItems: 'center'}}>
+			      <Label type='title' size='md' text={this.props.title} />
+			      <Text style={{marginTop:5,}}>{this.props.subtitle}</Text>
 			    </View>
 			</Overlay.PopView>
 		);
@@ -282,27 +359,53 @@ class BoardA extends Component {
 			<View style={styles.boardA}>
 				<View style={styles.boardContent}>
 					<Text style={{
-						fontSize:50,
+						fontSize:20,
 						color:'#66CC99',
 					}}>{this.props.value}</Text>
 					<Text style={{
 						fontSize:14,
 						color:'#666',
+						marginTop:5,
 					}}>锈病爆发概率</Text>
 				</View>
 				<View style={styles.boardContent}>
 					<Text style={{
-						fontSize:14,
+						fontSize:12,
 						color:'#66CC99',
 					}}>{this.props.description.a}</Text>
 					<Text style={{
-						fontSize:14,
+						fontSize:12,
 						color:'#FF9966',
 					}}>{this.props.description.b}</Text>
 					<Text style={{
-						fontSize:14,
+						fontSize:12,
 						color:'#FF6666',
 					}}>{this.props.description.c}</Text>
+				</View>
+			</View>
+		);
+	}
+}
+
+
+class BoardD extends Component {
+	constructor(props){
+		super(props)
+	}
+	render(){
+		return(
+			<View style={styles.boardD}>
+				<View style={styles.boardContent}>
+					<Icon name={this.props.icon} size={20} type='feather' color='#337ab7'/>
+					<Text style={{
+						fontSize:20,
+						color:this.props.color ? this.props.color : '#337ab7',
+					}}>{this.props.value}</Text>
+					<Text style={{
+						fontSize:14,
+						color:'#666',
+						marginTop:10,
+					}}>{this.props.hrs}</Text>
 				</View>
 			</View>
 		);
@@ -321,21 +424,21 @@ class BoardB extends Component {
 						<Text style={{
 							color:'#FF9966',
   							fontSize:20}}>{this.props.valueA}</Text>
-						<Text>实时天气</Text>
+						<Text>{this.props.titleA}</Text>
 
 					</View>
 					<View style={styles.boardContent}>
 						<Text style={{
 							color:'#6699FF',
   							fontSize:20}}>{this.props.valueB}</Text>
-						<Text>气压</Text>
+						<Text>{this.props.titleB}</Text>
 
 					</View>
 					<View style={styles.boardContent}>
 						<Text style={{
 							color:'#9966FF',
   							fontSize:20}}>{this.props.valueC}</Text>
-						<Text>紫外线强度</Text>
+						<Text>{this.props.titleC}</Text>
 
 					</View>
 				</View>
@@ -344,21 +447,21 @@ class BoardB extends Component {
 						<Text style={{
 							color:'#66CCFF',
   							fontSize:20}}>{this.props.valueD}</Text>
-						<Text>风向</Text>
+						<Text>{this.props.titleD}</Text>
 
 					</View>
 					<View style={styles.boardContent}>
 						<Text style={{
 							color:'#66CCFF',
   							fontSize:20}}>{this.props.valueE}</Text>
-						<Text>风级</Text>
+						<Text>{this.props.titleE}</Text>
 
 					</View>
 					<View style={styles.boardContent}>
 						<Text style={{
 							color:'#66CCFF',
   							fontSize:20}}>{this.props.valueF}</Text>
-						<Text>风速</Text>
+						<Text>{this.props.titleF}</Text>
 
 					</View>
 				</View>
@@ -390,8 +493,7 @@ export class CardA extends Component {
 				      />
 				  }
 				>
-					<BoardA value={data.cardA.value} description={data.cardA.description}/>
-					<LiChart title={data.cardA.titlex} width={Dimensions.get('window').width - 20} label={data.cardA.label} data={data.cardA.data} color="#9966FF"/>
+					<BoardA value={data.cardA.value} description={data.cardA.description} />
 				</Carousel>
 			</View>
 		);
@@ -412,12 +514,38 @@ export class CardB extends Component {
 					style={{
 			        	width:'100%',
 			        }}>
-					<LiChart width={2*Dimensions.get('window').width - 20} label={data.cardB.label} data={data.cardB.data} color="#337ab7"/>
+					<BoardD hrs={'0:00'} value={'阴'} icon="cloud"/>
+					<BoardD hrs={'1:00'} value={'雪'} icon="cloud-snow"/>
+					<BoardD hrs={'2:00'} value={'雪'} icon="cloud-snow"/>
+					<BoardD hrs={'3:00'} value={'雪'} icon="cloud-snow"/>
+					<BoardD hrs={'4:00'} value={'雪'} icon="cloud-snow"/>
+					<BoardD hrs={'5:00'} value={'雪'} icon="cloud-snow"/>
+					<BoardD hrs={'6:00'} value={'晴'} icon="sun"/>
+					<BoardD hrs={'7:00'} value={'晴'} icon="sun"/>
+					<BoardD hrs={'8:00'} value={'晴'} icon="sun"/>
+					<BoardD hrs={'9:00'} value={'晴'} icon="sun"/>
+					<BoardD hrs={'10:00'} value={'晴'} icon="sun"/>
+					<BoardD hrs={'11:00'} value={'晴'} icon="sun"/>
+					<BoardD hrs={'12:00'} value={'晴'} icon="sun"/>
+					<BoardD hrs={'13:00'} value={'晴'} icon="sun"/>
+					<BoardD hrs={'14:00'} value={'晴'} icon="sun"/>
+					<BoardD hrs={'15:00'} value={'晴'} icon="sun"/>
+					<BoardD hrs={'16:00'} value={'雨'} icon="cloud-rain"/>
+					<BoardD hrs={'17:00'} value={'雨'} icon="cloud-rain"/>
+					<BoardD hrs={'18:00'} value={'雨'} icon="cloud-rain"/>
+					<BoardD hrs={'19:00'} value={'雨'} icon="cloud-rain"/>
+					<BoardD hrs={'20:00'} value={'阴'} icon="cloud"/>
+					<BoardD hrs={'21:00'} value={'阴'} icon="cloud"/>
+					<BoardD hrs={'22:00'} value={'阴'} icon="cloud"/>
+					<BoardD hrs={'23:00'} value={'阴'} icon="cloud"/>
 				</ScrollView>
 			</View>
 		);
 	}
 }
+
+
+
 
 export class CardC extends Component {
 	constructor(props){
@@ -427,7 +555,7 @@ export class CardC extends Component {
 		return(
 			<View style={styles.card}>
 				<Title title={data.cardC.title} icon="cloud-rain" subtitle={moment(Date()).format('ll')}/>
-				<LiChart width={Dimensions.get('window').width - 20} label={data.cardC.label} data={data.cardC.data} color="#66CC99"/>
+				<LiChart width={Dimensions.get('window').width - 20} label={data.cardC.label} data={data.cardC.data} color="#337ab7"/>
 			</View>
 		);
 	}
@@ -440,7 +568,7 @@ export class CardD extends Component {
 	render(){
 		return(
 			<View style={styles.card}>
-				<Title title={data.cardD.title} icon="cloud-drizzle" subtitle={moment(Date()).format('ll')}/>
+				<Title title={data.cardD.title} icon="cloud-drizzle" subtitle={'定制版可提供土壤湿度，精确监测'}/>
 				<PrChart label={data.cardD.label}  data={data.cardD.data} color="#337ab7"/>
 			</View>
 		);
@@ -455,12 +583,19 @@ export class CardE extends Component {
 		return(
 			<View style={styles.card}>
 				<Title title={data.cardE.title} icon="moon" subtitle={moment(Date()).format('ll')}/>
-				<BoardB valueA={data.cardE.valueA} 
+				<BoardB titleA={data.cardE.titleA} 
+						titleB={data.cardE.titleB} 
+						titleC={data.cardE.titleC} 
+						titleD={data.cardE.titleD} 
+						titleE={data.cardE.titleE} 
+						titleF={data.cardE.titleF}
+						valueA={data.cardE.valueA} 
 						valueB={data.cardE.valueB} 
 						valueC={data.cardE.valueC} 
 						valueD={data.cardE.valueD} 
 						valueE={data.cardE.valueE} 
-						valueF={data.cardE.valueF}/>
+						valueF={data.cardE.valueF}
+						/>
 			</View>
 		);
 	}
@@ -540,7 +675,7 @@ export class PrChart extends Component {
 			    }}
 			  />
 			  <Text>
-	      		外圈为空气湿度，内圈为土壤湿度
+	      		空气湿度
 	      	  </Text>
 			</View>
 	    );
@@ -560,7 +695,25 @@ export class BarA extends Component {
 		return(
 			<View style={styles.card}>
 				<Title title={data.barA.title} icon="monitor"/>
-				<LiChart width={Dimensions.get('window').width - 20} label={data.barA.label} data={data.barA.data} color="#337ab7"/>
+				<ScrollView 
+			        showsHorizontalScrollIndicator={false}
+			        horizontal={true} 
+					style={{
+			        	width:'100%',
+			        }}>
+					<BoardD hrs={'1月'} value={'轻度'} color={'#66CC99'}/>
+					<BoardD hrs={'2月'} value={'轻度'} color={'#66CC99'}/>
+					<BoardD hrs={'3月'} value={'中等'} color={'#FF9966'}/>
+					<BoardD hrs={'4月'} value={'严重'} color={'#FF6666'}/>
+					<BoardD hrs={'5月'} value={'中等'} color={'#FF9966'}/>
+					<BoardD hrs={'6月'} value={'轻度'}  color={'#66CC99'}/>
+					<BoardD hrs={'7月'} value={'轻度'}  color={'#66CC99'}/>
+					<BoardD hrs={'8月'} value={'轻度'}  color={'#66CC99'}/>
+					<BoardD hrs={'9月'} value={'中等'} color={'#FF9966'}/>
+					<BoardD hrs={'10月'} value={'严重'} color={'#FF6666'}/>
+					<BoardD hrs={'11月'} value={'中等'} color={'#FF9966'}/>
+					<BoardD hrs={'12月'} value={'轻度'}  color={'#66CC99'}/>
+				</ScrollView>
 			</View>
 		);
 	}
@@ -574,7 +727,81 @@ export class BarB extends Component {
 		return(
 			<View style={styles.card}>
 				<Title title={data.barB.title} icon="thermometer"/>
-				<LiChart width={Dimensions.get('window').width - 20} label={data.barB.label} data={data.barB.data} color="#337ab7"/>
+				<ScrollView 
+			        showsHorizontalScrollIndicator={false}
+			        horizontal={true} 
+					style={{
+			        	width:'100%',
+			        }}>
+				<LiChart width={Dimensions.get('window').width + 100} label={data.barB.label} data={data.barB.data} color="#337ab7"/>
+				</ScrollView>
+			</View>
+		);
+	}
+}
+
+export class BarC extends Component {
+	constructor(props){
+		super(props)
+	}
+	render(){
+		return(
+			<View style={styles.card}>
+				<Title title={data.barC.title} icon="monitor"/>
+				<ScrollView 
+			        showsHorizontalScrollIndicator={false}
+			        horizontal={true} 
+					style={{
+			        	width:'100%',
+			        }}>
+				<LiChart width={Dimensions.get('window').width + 100} label={data.barC.label} data={data.barC.data} color="#337ab7"/>
+				</ScrollView>
+			</View>
+		);
+	}
+}
+
+export class BarD extends Component {
+	constructor(props){
+		super(props)
+	}
+	render(){
+		return(
+			<View style={styles.card}>
+				<Title title={data.barD.title} icon="monitor"/>
+				<ScrollView 
+			        showsHorizontalScrollIndicator={false}
+			        horizontal={true} 
+					style={{
+			        	width:'100%',
+			        }}>
+				<LiChart width={Dimensions.get('window').width + 100} label={data.barD.label} data={data.barD.data} color="#337ab7"/>
+				</ScrollView>
+			</View>
+		);
+	}
+}
+
+export class BarE extends Component {
+	constructor(props){
+		super(props)
+	}
+	render(){
+		return(
+			<View style={styles.card}>
+				<Title title={data.barE.title} icon="monitor"/>
+				<BoardB titleA={data.barE.titleA} 
+						titleB={data.barE.titleB} 
+						titleC={data.barE.titleC} 
+						titleD={data.barE.titleD} 
+						titleE={data.barE.titleE} 
+						titleF={data.barE.titleF}
+						valueA={data.barE.valueA} 
+						valueB={data.barE.valueB} 
+						valueC={data.barE.valueC} 
+						valueD={data.barE.valueD} 
+						valueE={data.barE.valueE} 
+						valueF={data.barE.valueF}/>
 			</View>
 		);
 	}

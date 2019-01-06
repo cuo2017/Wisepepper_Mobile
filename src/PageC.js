@@ -35,7 +35,7 @@ export default class PageC extends Component{
 					         
 					    </View>
 					</SegmentedView.Sheet>
-					<SegmentedView.Sheet title='锈病'>
+					<SegmentedView.Sheet title='病害'>
 					    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
 					    	<ScrollView 
 						        showsVerticalScrollIndicator={false}

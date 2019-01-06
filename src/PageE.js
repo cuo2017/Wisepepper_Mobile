@@ -104,8 +104,8 @@ export default class PageE extends Component{
 						<PricingCard
 						  color='#6699FF'
 						  title='标准版'
-						  price='￥100'
-						  info={['进阶用户', '监测功能', '专家提问']}
+						  price='￥-/年'
+						  info={['监测统计', '专业咨询', '专家提问']}
 						  button={{ title: '加入', icon: 'flight-takeoff' }}
 						  titleStyle={{
 						  	fontSize:20
@@ -117,8 +117,8 @@ export default class PageE extends Component{
 						<PricingCard
 						  color='#9966FF'
 						  title='定制版'
-						  price='￥1000'
-						  info={['定制硬件', '专属数据', '实时监控']}
+						  price='￥-/年'
+						  info={['定制硬件', '实时监控', '精确数据']}
 						  button={{ title: '加入', icon: 'flight-takeoff' }}
 						  titleStyle={{
 						  	fontSize:20

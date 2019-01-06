@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, ImageBackground, ScrollView} from 'react-native';
-import {BarA, BarB} from './Components/Primary';
-import {NavigationBar} from 'teaset';
+import {BarA, BarB,BarC,BarD,BarE} from './Components/Primary';
+import {NavigationBar,SegmentedView} from 'teaset';
 const styles = StyleSheet.create({
   page: {
     flex: 1,
@@ -28,17 +28,39 @@ export default class PageB extends Component{
 		          width:'100%',
 		          height:'100%',
 		        }}>
+		        <SegmentedView style={{flex: 1,marginTop:68}} type='projector'>
+				  	<SegmentedView.Sheet title='统计' style={{paddingTop:0}}>
+					    <ScrollView 
+					        showsVerticalScrollIndicator={false}
+					        horizontal={false} 
+							style={{
+								marginTop:2.5,
+					        	width:'100%',
+					        	marginLeft:5,
+					        	marginRight:5,
+					        }}>
+					        <BarA />
+					        <BarB />
+					        <BarC />
+					        <BarD />
+				        </ScrollView>
+					</SegmentedView.Sheet>
+					<SegmentedView.Sheet title='监测' style={{paddingTop:0}}>
+					    <ScrollView 
+					        showsVerticalScrollIndicator={false}
+					        horizontal={false} 
+							style={{
+								marginTop:2.5,
+					        	width:'100%',
+					        	marginLeft:5,
+					        	marginRight:5,
+					        }}>
+					        <BarE />
+				        </ScrollView>
+					</SegmentedView.Sheet>
+				</SegmentedView>
 		        
-				<ScrollView 
-			        showsVerticalScrollIndicator={false}
-			        horizontal={false} 
-					style={{
-						marginTop:70,
-			        	width:'100%',
-			        }}>
-			        <BarA />
-			        <BarB />
-		        </ScrollView>
+				
 			    <NavigationBar title='图表监测' />
 				</ImageBackground>
 			</View>
