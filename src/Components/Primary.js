@@ -623,7 +623,24 @@ export class CardE extends Component {
 		return(
 			<View style={styles.card}>
 				<Title title={data.cardE.title} icon="moon" subtitle={moment(Date()).format('ll')}/>
-				<BoardB titleA={data.cardE.titleA} 
+				<Carousel
+					  style={{alignItems: 'flex-end',borderTopLeftRadius:5,
+		        			borderTopRightRadius:5,
+		        			borderBottomLeftRadius:5,
+		        			borderBottomRightRadius:5,
+		        			backgroundColor:'rgb(250,250,250)',
+		        			height: 200,
+		        			width:Dimensions.get('window').width-10,}}
+					  control={
+					    <Carousel.Control
+					      style={{alignItems: 'flex-end'}}
+					      dot={<Text style={{backgroundColor: 'rgba(0, 0, 0, 0)', color: '#337ab7', padding: 4}}>□</Text>}
+					      activeDot={<Text style={{backgroundColor: 'rgba(0, 0, 0, 0)', color: '#337ab7', padding: 4}}>■</Text>}
+					      />
+					  }
+					>
+					<BoardB 
+						titleA={data.cardE.titleA} 
 						titleB={data.cardE.titleB} 
 						titleC={data.cardE.titleC} 
 						titleD={data.cardE.titleD} 
@@ -635,7 +652,22 @@ export class CardE extends Component {
 						valueD={data.cardE.valueD} 
 						valueE={data.cardE.valueE} 
 						valueF={data.cardE.valueF}
-						/>
+					/>
+					<BoardB 
+						titleA={data.cardE.titleA} 
+						titleB={data.cardE.titleB} 
+						titleC={data.cardE.titleC} 
+						titleD={data.cardE.titleD} 
+						titleE={data.cardE.titleE} 
+						titleF={data.cardE.titleF}
+						valueA={data.cardE.valueA} 
+						valueB={data.cardE.valueB} 
+						valueC={data.cardE.valueC} 
+						valueD={data.cardE.valueD} 
+						valueE={data.cardE.valueE} 
+						valueF={data.cardE.valueF}
+					/>
+				</Carousel>
 			</View>
 		);
 	}

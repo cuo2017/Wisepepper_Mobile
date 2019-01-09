@@ -48,16 +48,7 @@ export default class PageA extends Component{
 		        			borderTopRightRadius:5,
 		        			borderBottomLeftRadius:5,
 		        			borderBottomRightRadius:5,}}>
-			      		<ImageBackground source={require('../dist/images/sun.jpg')} style={{
-				          	width:Dimensions.get('window').width-10,
-				          	borderRadius:5,
-				          	height:100,
-				          	alignItems: 'center', justifyContent: 'center' 
-				        	}}
-				        	imageStyle={{
-				        		borderRadius:5,
-				        	}}
-				        	>
+			      		
 			      	<Carousel
 					  style={{alignItems: 'flex-end',borderTopLeftRadius:5,
 		        			borderTopRightRadius:5,
@@ -73,32 +64,74 @@ export default class PageA extends Component{
 				       		height: 100,
 
 				       	 	width:Dimensions.get('window').width-10, alignItems: 'center', justifyContent: 'center' }}>
-
+				       	 	<ImageBackground source={require('../dist/images/sun.jpg')} style={{
+				          	width:Dimensions.get('window').width-10,
+				          	borderRadius:5,
+				          	height:100,
+				          	alignItems: 'center', justifyContent: 'center' 
+				        	}}
+				        	imageStyle={{
+				        		borderRadius:5,
+				        	}}
+				        	>
 				        		<Text style={{fontSize:20,color:'#fff'}}>{'四川省绵阳市'}</Text>
 				        		<Text style={{fontSize:14,color:'#fff'}}>{'当前地点'}</Text>
+			       			 </ImageBackground>
 				        	
 				        </View>
 				        <View style={{ 
 				       		height: 100,
 				       	 	width:Dimensions.get('window').width-10, alignItems: 'center', justifyContent: 'center' }}>
+				        	<ImageBackground source={require('../dist/images/bg3.jpeg')} style={{
+				          	width:Dimensions.get('window').width-10,
+				          	borderRadius:5,
+				          	height:100,
+				          	alignItems: 'center', justifyContent: 'center' 
+				        	}}
+				        	imageStyle={{
+				        		borderRadius:5,
+				        	}}
+				        	>
 				        	<Text style={{fontSize:20,color:'#fff'}}>{moment(Date()).format('ll')}</Text>
 			        		<Text style={{fontSize:14,color:'#fff'}}>{'当前日期'}</Text>
+			        		</ImageBackground>
 			        	</View>
 			        	<View style={{ 
 				       		height: 100,
 				       	 	width:Dimensions.get('window').width-10, alignItems: 'center', justifyContent: 'center' }}>
+				        	<ImageBackground source={require('../dist/images/bg.jpeg')} style={{
+				          	width:Dimensions.get('window').width-10,
+				          	borderRadius:5,
+				          	height:100,
+				          	alignItems: 'center', justifyContent: 'center' 
+				        	}}
+				        	imageStyle={{
+				        		borderRadius:5,
+				        	}}
+				        	>
 				        	<Text style={{fontSize:20,color:'#fff'}}>{ 4 + '°C'}</Text>
 				        	<Text style={{fontSize:14,color:'#fff'}}>{'体感温度'}</Text>
+				        	</ImageBackground>
 			        	</View>
 			        	<View style={{ 
 				       		height: 100,
 				       	 	width:Dimensions.get('window').width-10, alignItems: 'center', justifyContent: 'center' }}>
+				        	<ImageBackground source={require('../dist/images/bg2.jpeg')} style={{
+				          	width:Dimensions.get('window').width-10,
+				          	borderRadius:5,
+				          	height:100,
+				          	alignItems: 'center', justifyContent: 'center' 
+				        	}}
+				        	imageStyle={{
+				        		borderRadius:5,
+				        	}}
+				        	>
 				        	<Text style={{fontSize:20,color:'#fff'}}>{'晴'}</Text>
 				        	<Text style={{fontSize:14,color:'#fff'}}>{'当前天气'}</Text>
+				        	</ImageBackground>
 			        	</View>
 
 			        </Carousel>
-			        </ImageBackground>
 			        </View>
 			      )}>
 			      	<View style={{marginTop:2.5,width:'100%',backgroundColor:'rgb(255,255,255,0)'}}>
