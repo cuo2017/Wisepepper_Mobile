@@ -26,7 +26,7 @@ export default class App extends Component {
 		    icon={<Icon name='home' type='font-awesome' color='#ccc'/>}
 		    activeIcon={<Icon name='home' type='font-awesome' color='#337ab7' />}
 		  >
-		  	<PageA/>
+		  	<PageA />
 		  </TabView.Sheet>
 		  <TabView.Sheet
 		    title='监测'

@@ -35,7 +35,6 @@ export default class PageB extends Component{
 					        horizontal={false} 
 							style={{
 								marginTop:2.5,
-					        	width:'100%',
 					        	marginLeft:5,
 					        	marginRight:5,
 					        }}>
@@ -51,7 +50,6 @@ export default class PageB extends Component{
 					        horizontal={false} 
 							style={{
 								marginTop:2.5,
-					        	width:'100%',
 					        	marginLeft:5,
 					        	marginRight:5,
 					        }}>

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, ImageBackground, ScrollView,Dimensions,TouchableHighlight} from 'react-native';
-import {CardA, CardB, CardC, CardD, CardE} from './Components/Primary';
+import {CardA, CardB,CardC1, CardC, CardD, CardE} from './Components/Primary';
 import {NavigationBar,Overlay,Label,Carousel} from 'teaset';
 import ParallaxScrollView from 'react-native-parallax-scroll-view';
 import moment from 'moment';
@@ -104,6 +104,7 @@ export default class PageA extends Component{
 			      	<View style={{marginTop:2.5,width:'100%',backgroundColor:'rgb(255,255,255,0)'}}>
 			      	<CardA />
 			        <CardB />
+			        <CardC1 />
 			        <CardC />
 			        <CardD />
 			        <CardE />

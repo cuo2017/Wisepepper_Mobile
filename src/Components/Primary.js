@@ -70,6 +70,19 @@ const data = {
 			          Math.random() * 10,
 			        ]
 	},
+	cardC1:{
+		title:'未来一周天气预报',
+		label:['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
+		data: [
+			          Math.random() * 10 - 5,
+			          Math.random() * 10 - 5,
+			          Math.random() * 10 - 5,
+			          Math.random() * 10 - 5,
+			          Math.random() * 10 - 5,
+			          Math.random() * 10 - 5,
+			          Math.random() * 10 - 5,
+			        ]
+	},
 	cardC:{
 		title:'未来一周气温（°C）',
 		label:['周一', '周二', '周三', '周四', '周五', '周六', '周日'],
@@ -84,7 +97,7 @@ const data = {
 			        ]
 	},
 	cardD:{
-		title:'湿度情况',
+		title:'未来一周湿度情况',
 		label:['空气湿度'],
 		data:[0.64],
 	},
@@ -422,21 +435,21 @@ class BoardB extends Component {
 				<View style={styles.boardBs}>
 					<View style={styles.boardContent}>
 						<Text style={{
-							color:'#FF9966',
+							color:'#337ab7',
   							fontSize:20}}>{this.props.valueA}</Text>
 						<Text>{this.props.titleA}</Text>
 
 					</View>
 					<View style={styles.boardContent}>
 						<Text style={{
-							color:'#6699FF',
+							color:'#337ab7',
   							fontSize:20}}>{this.props.valueB}</Text>
 						<Text>{this.props.titleB}</Text>
 
 					</View>
 					<View style={styles.boardContent}>
 						<Text style={{
-							color:'#9966FF',
+							color:'#337ab7',
   							fontSize:20}}>{this.props.valueC}</Text>
 						<Text>{this.props.titleC}</Text>
 
@@ -445,21 +458,21 @@ class BoardB extends Component {
 				<View style={styles.boardBs}>
 					<View style={styles.boardContent}>
 						<Text style={{
-							color:'#66CCFF',
+							color:'#337ab7',
   							fontSize:20}}>{this.props.valueD}</Text>
 						<Text>{this.props.titleD}</Text>
 
 					</View>
 					<View style={styles.boardContent}>
 						<Text style={{
-							color:'#66CCFF',
+							color:'#337ab7',
   							fontSize:20}}>{this.props.valueE}</Text>
 						<Text>{this.props.titleE}</Text>
 
 					</View>
 					<View style={styles.boardContent}>
 						<Text style={{
-							color:'#66CCFF',
+							color:'#337ab7',
   							fontSize:20}}>{this.props.valueF}</Text>
 						<Text>{this.props.titleF}</Text>
 
@@ -538,6 +551,33 @@ export class CardB extends Component {
 					<BoardD hrs={'21:00'} value={'阴'} icon="cloud"/>
 					<BoardD hrs={'22:00'} value={'阴'} icon="cloud"/>
 					<BoardD hrs={'23:00'} value={'阴'} icon="cloud"/>
+				</ScrollView>
+			</View>
+		);
+	}
+}
+
+export class CardC1 extends Component {
+	constructor(props){
+		super(props)
+	}
+	render(){
+		return(
+			<View style={styles.card}>
+				<Title title={data.cardC1.title} icon="cloud" subtitle={moment(Date()).format('ll')}/>
+				<ScrollView 
+			        showsHorizontalScrollIndicator={false}
+			        horizontal={true} 
+					style={{
+			        	width:'100%',
+			        }}>
+					<BoardD hrs={'周一'} value={'晴'} icon="sun"/>
+					<BoardD hrs={'周二'} value={'晴'} icon="sun"/>
+					<BoardD hrs={'周三'} value={'阴'} icon="cloud"/>
+					<BoardD hrs={'周四'} value={'晴'} icon="sun"/>
+					<BoardD hrs={'周五'} value={'阴'} icon="cloud"/>
+					<BoardD hrs={'周六'} value={'晴'} icon="sun"/>
+					<BoardD hrs={'周日'} value={'阴'} icon="cloud"/>
 				</ScrollView>
 			</View>
 		);
@@ -664,7 +704,7 @@ export class PrChart extends Component {
 			      backgroundGradientFrom: 'rgb(250,250,250)',
 			      backgroundGradientTo: 'rgb(250,250,250)',
 			      decimalPlaces: 1, // optional, defaults to 2dp 小数点两位
-			      color:  (opacity = 1) => `rgba(102, 153, 255, ${opacity})`,
+			      color:  (opacity = 1) => `rgba(51, 122, 183, ${opacity})`,
 			      style: {
 			        borderRadius: 0,
 			      }
